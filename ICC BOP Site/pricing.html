@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOP Pricing — Business Operations Platform by Independent Commerce</title>
+<meta name="description" content="Transparent, all-in pricing for the BOP. Three tiers based on team size. Setup + fully managed monthly — everything included. No add-ons, no hidden costs, no per-user fees.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0d0d0d; --green-deep: #0e3d25; --green-mid: #1a5c3a;
+  --green-bright: #2d8a56; --green-light: #d4eddf; --green-pale: #f0faf5;
+  --white: #ffffff; --gray-mid: #e0e0e0; --gray-light: #f5f5f5;
+  --gray-text: #666; --gray-muted: #999;
+  --sp: 100px; --side: 64px; --max: 1040px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(13,13,13,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--side); }
+.nav-logo { text-decoration: none; display: flex; flex-direction: column; gap: 3px; }
+.nav-logo-mark { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; line-height: 1; }
+.nav-logo-mark em { font-style: normal; color: var(--green-bright); }
+.nav-logo-sub { font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.3); letter-spacing: 2px; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-link { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover, .nav-link.active { color: var(--white); }
+.nav-cta { background: var(--green-mid); color: var(--white); padding: 10px 22px; border-radius: 3px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--green-bright); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 199; padding: 48px 32px; flex-direction: column; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.6); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+.mobile-nav a:hover { color: var(--white); }
+.mobile-nav .mob-cta { margin-top: 24px; background: var(--green-mid); color: var(--white) !important; padding: 16px 0; border-radius: 3px; text-align: center; font-size: 15px !important; border-bottom: none; }
+
+/* SHARED */
+.accent-bar { height: 3px; background: linear-gradient(90deg, var(--green-mid), var(--green-bright) 45%, transparent); }
+.section { padding: var(--sp) var(--side); }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.stag { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 1.6px; color: var(--green-mid); text-transform: uppercase; margin-bottom: 20px; }
+.stag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--green-mid); }
+.stag.lt { color: var(--green-bright); }
+.stag.lt::before { background: var(--green-bright); }
+.sh2 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 50px); font-weight: 400; color: var(--black); line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 16px; }
+.sh2.lt { color: var(--white); }
+.sh2 em { font-style: italic; color: var(--green-mid); }
+.sh2.lt em { color: var(--green-bright); }
+.slead { font-size: 16px; color: var(--gray-text); line-height: 1.75; max-width: 600px; }
+.slead.lt { color: rgba(255,255,255,0.4); }
+.btn { display: inline-block; padding: 14px 28px; border-radius: 3px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.btn-primary { background: var(--green-mid); color: var(--white); }
+.btn-primary:hover { background: var(--green-bright); transform: translateY(-1px); }
+.btn-outline { border: 1.5px solid var(--green-light); color: var(--green-mid); background: transparent; }
+.btn-outline:hover { border-color: var(--green-mid); background: var(--green-pale); }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+/* PAGE HERO */
+#hero { background: var(--black); padding: 140px var(--side) 80px; position: relative; overflow: hidden; }
+.hero-mesh { position: absolute; inset: 0; background-image: linear-gradient(rgba(45,138,86,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45,138,86,0.04) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; }
+.hero-glow { position: absolute; bottom: -200px; right: -100px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(26,92,58,0.16) 0%, transparent 60%); pointer-events: none; }
+.hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 2; }
+.hero-inner h1 { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 5.5vw, 72px); font-weight: 400; color: var(--white); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s ease 0.15s forwards; }
+.hero-inner h1 em { font-style: italic; color: var(--green-bright); }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 1.8px; color: var(--green-bright); text-transform: uppercase; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--green-bright); }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.42); line-height: 1.72; max-width: 560px; opacity: 0; animation: fadeUp 0.6s ease 0.25s forwards; }
+
+/* HONESTY BAR */
+.honesty-bar { background: rgba(45,138,86,0.08); border-top: 1px solid rgba(45,138,86,0.15); border-bottom: 1px solid rgba(45,138,86,0.15); }
+.honesty-bar-inner { max-width: var(--max); margin: 0 auto; padding: 24px var(--side); display: flex; align-items: center; gap: 48px; }
+.honesty-item { display: flex; align-items: center; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.55); }
+.honesty-item::before { content: '✓'; color: var(--green-bright); font-weight: 700; font-size: 14px; flex-shrink: 0; }
+
+/* WHY STACK COSTS */
+#cost { background: var(--black); }
+.cost-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+.stack-table-wrap { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+.stack-table-header { background: rgba(255,255,255,0.04); padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; }
+.stack-table-header span { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.stack-table-header span:last-child { text-align: right; }
+.stack-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; transition: background 0.15s; }
+.stack-row:hover { background: rgba(255,255,255,0.02); }
+.stack-row:last-child { border-bottom: none; }
+.stack-tool { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+.stack-covers { font-size: 12px; color: rgba(255,255,255,0.3); }
+.stack-cost { font-size: 13px; font-weight: 700; color: #e05c5c; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stack-total-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; padding: 16px 20px; background: rgba(224,92,92,0.07); border-top: 2px solid rgba(224,92,92,0.3); align-items: center; }
+.stack-total-row .stack-tool { color: var(--white); }
+.stack-total-row .stack-cost { color: #e05c5c; font-size: 15px; }
+.bop-row-bar { display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; padding: 16px 20px; background: rgba(45,138,86,0.12); border-top: 2px solid rgba(45,138,86,0.4); align-items: center; }
+.bop-row-bar .stack-tool { color: var(--green-bright); }
+.bop-row-bar .stack-covers { color: rgba(255,255,255,0.4); }
+.bop-row-bar .stack-cost { color: var(--green-bright); font-size: 15px; }
+.savings-strip { background: var(--green-mid); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; border-radius: 0 0 8px 8px; }
+.savings-strip span { font-size: 12px; color: rgba(255,255,255,0.7); }
+.savings-strip strong { font-size: 14px; color: var(--white); }
+.stack-source { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 12px; line-height: 1.6; }
+
+/* TIERS */
+#tiers { background: var(--gray-light); }
+.tiers-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+.tier-note { background: var(--white); border: 1.5px solid var(--green-light); border-radius: 6px; padding: 18px 22px; font-size: 13px; color: var(--gray-text); line-height: 1.65; }
+.tier-note strong { color: var(--black); }
+.tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tier-card { background: var(--white); border: 1.5px solid var(--gray-mid); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s; }
+.tier-card:hover { border-color: var(--green-light); box-shadow: 0 4px 28px rgba(45,138,86,0.08); }
+.tier-card.featured { border-color: var(--green-mid); }
+.tier-head { padding: 28px 28px 24px; border-bottom: 1.5px solid var(--gray-mid); }
+.tier-card.featured .tier-head { background: var(--black); border-bottom-color: rgba(255,255,255,0.07); }
+.tier-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+.tier-badge.standard { background: var(--green-pale); color: var(--green-mid); }
+.tier-badge.popular { background: var(--green-mid); color: var(--white); }
+.tier-badge.enterprise { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
+.tier-name { font-size: 18px; font-weight: 800; color: var(--black); margin-bottom: 4px; letter-spacing: -0.4px; }
+.tier-card.featured .tier-name { color: var(--white); }
+.tier-size { font-size: 12px; color: var(--gray-muted); margin-bottom: 20px; }
+.tier-card.featured .tier-size { color: rgba(255,255,255,0.35); }
+.tier-pricing { display: flex; gap: 0; border: 1.5px solid var(--gray-mid); border-radius: 6px; overflow: hidden; }
+.tier-card.featured .tier-pricing { border-color: rgba(255,255,255,0.1); }
+.tier-price-cell { flex: 1; padding: 12px 14px; border-right: 1.5px solid var(--gray-mid); }
+.tier-card.featured .tier-price-cell { border-right-color: rgba(255,255,255,0.1); }
+.tier-price-cell:last-child { border-right: none; }
+.tier-price-lbl { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--green-mid); margin-bottom: 4px; }
+.tier-card.featured .tier-price-lbl { color: var(--green-bright); }
+.tier-price-val { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; color: var(--black); line-height: 1; }
+.tier-card.featured .tier-price-val { color: var(--white); }
+.tier-price-note { font-size: 10px; color: var(--gray-muted); margin-top: 3px; }
+.tier-card.featured .tier-price-note { color: rgba(255,255,255,0.25); }
+.tier-body { padding: 24px 28px; flex: 1; display: flex; flex-direction: column; }
+.tier-section-lbl { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--green-mid); margin: 16px 0 8px; }
+.tier-section-lbl:first-child { margin-top: 0; }
+.tier-includes { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.tier-includes li { display: flex; gap: 9px; font-size: 12px; color: var(--black); line-height: 1.5; align-items: flex-start; }
+.tier-includes li::before { content: '✓'; color: var(--green-mid); font-weight: 700; flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+.tier-also { font-size: 12px; color: var(--gray-text); font-style: italic; margin: 12px 0 8px; padding-top: 12px; border-top: 1px solid var(--gray-mid); }
+.tier-cta { margin-top: auto; padding-top: 24px; }
+.tier-cta a { display: block; padding: 13px; text-align: center; border-radius: 3px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.tier-cta a.primary { background: var(--green-mid); color: var(--white); }
+.tier-cta a.primary:hover { background: var(--green-bright); transform: translateY(-1px); }
+.tier-cta a.outline { border: 1.5px solid var(--green-light); color: var(--green-mid); }
+.tier-cta a.outline:hover { border-color: var(--green-mid); background: var(--green-pale); }
+
+/* WHATS INCLUDED */
+#included { background: var(--white); }
+.included-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+.modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.module-card { background: var(--gray-light); border: 1.5px solid var(--gray-mid); border-radius: 6px; padding: 22px 20px; transition: border-color 0.2s; }
+.module-card:hover { border-color: var(--green-light); }
+.module-icon { font-size: 22px; margin-bottom: 12px; }
+.module-name { font-size: 13px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+.module-desc { font-size: 12px; color: var(--gray-text); line-height: 1.6; }
+
+/* MIGRATION */
+#migration { background: var(--gray-light); }
+.migration-intro { margin-bottom: 40px; }
+.mig-table { width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--gray-mid); }
+.mig-table thead th { background: var(--black); color: var(--white); padding: 14px 20px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+.mig-table thead th:last-child { text-align: right; }
+.mig-table tbody td { padding: 14px 20px; border-bottom: 1px solid var(--gray-mid); font-size: 13px; color: var(--gray-text); background: var(--white); }
+.mig-table tbody tr:nth-child(even) td { background: var(--green-pale); }
+.mig-table tbody td:last-child { text-align: right; font-weight: 700; color: var(--black); }
+.mig-table tbody td.inc { color: var(--green-mid); font-weight: 700; }
+.mig-note { margin-top: 20px; padding: 18px 22px; background: var(--white); border: 1.5px solid var(--green-light); border-radius: 6px; font-size: 13px; color: var(--gray-text); line-height: 1.65; }
+.mig-note strong { color: var(--black); }
+
+/* FAQ */
+#faq { background: var(--black); }
+.faq-intro { margin-bottom: 48px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; }
+.faq-item { background: rgba(255,255,255,0.02); padding: 28px 30px; transition: background 0.2s; }
+.faq-item:hover { background: rgba(45,138,86,0.05); }
+.faq-q { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 10px; line-height: 1.4; }
+.faq-a { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+.faq-a strong { color: rgba(255,255,255,0.6); font-weight: 600; }
+
+/* CTA STRIP */
+#cta { background: var(--green-deep); border-top: 1px solid rgba(45,138,86,0.3); }
+.cta-inner { max-width: var(--max); margin: 0 auto; padding: 64px var(--side); display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.cta-inner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: -0.5px; }
+.cta-inner h2 em { font-style: italic; color: var(--green-bright); }
+.cta-inner p { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 10px; }
+.cta-btns { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.cta-btns a { white-space: nowrap; }
+.btn-white { background: var(--white); color: var(--green-deep); }
+.btn-white:hover { background: var(--green-pale); }
+
+
+footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 36px var(--side); display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.footer-brand strong { font-size: 13px; font-weight: 800; color: var(--white); }
+.footer-brand strong em { font-style: normal; color: var(--green-bright); }
+.footer-brand p { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.65); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.15); }
+@media (max-width: 900px) { .footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; } .footer-copy { text-align: left; } }
+
+  .honesty-bar-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+@media (max-width: 600px) {
+  :root { --side: 24px; --sp: 56px; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .stack-table-header, .stack-row, .stack-total-row, .bop-row-bar { grid-template-columns: 1fr auto; }
+  .stack-table-header span:nth-child(2), .stack-row .stack-covers, .stack-total-row .stack-covers, .bop-row-bar .stack-covers { display: none; }
+}
+
+/* OPERATIONAL ADOPTION CALLOUT */
+.oa-callout { margin-top: 36px; border-radius: 8px; overflow: hidden; border: 2px solid var(--green-mid); background: linear-gradient(135deg, var(--green-pale) 0%, var(--white) 60%); }
+.oa-callout-inner { display: grid; grid-template-columns: 1fr 280px; gap: 0; }
+.oa-left { padding: 36px 36px 36px 36px; }
+.oa-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; background: var(--green-mid); color: var(--white); padding: 4px 12px; border-radius: 2px; margin-bottom: 14px; }
+.oa-title { font-family: "DM Serif Display", serif; font-size: 22px; font-weight: 400; color: var(--black); margin-bottom: 12px; letter-spacing: -0.3px; }
+.oa-desc { font-size: 13px; color: var(--gray-text); line-height: 1.7; margin-bottom: 18px; }
+.oa-points { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.oa-points li { display: flex; gap: 10px; font-size: 12px; color: var(--black); line-height: 1.5; }
+.oa-points li::before { content: "✓"; color: var(--green-mid); font-weight: 700; flex-shrink: 0; }
+.oa-right { background: var(--green-mid); padding: 36px 28px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.oa-right-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.oa-right-desc { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+.oa-cta { display: inline-block; padding: 12px 20px; background: var(--white); color: var(--green-mid); border-radius: 3px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; text-align: center; }
+.oa-cta:hover { background: var(--green-pale); }
+@media (max-width: 900px) { .oa-callout-inner { grid-template-columns: 1fr; } .oa-right { padding: 28px 36px; } }
+@media (max-width: 600px) { .oa-left { padding: 28px 24px; } .oa-right { padding: 24px; } }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark"><em>BOP</em></div>
+    <div class="nav-logo-sub">By Independent Commerce</div>
+  </a>
+  <div class="nav-right" id="navRight">
+    <a href="index.html" class="nav-link" data-page="index">Overview</a>
+    <a href="index.html#screenshots" class="nav-link">See It Live</a>
+    <a href="pricing.html" class="nav-link" data-page="pricing">Pricing</a>
+    <a href="why-bop.html" class="nav-link" data-page="why-bop">Why BOP</a>
+    <a href="index.html#book" class="nav-cta">Book a Discovery Call →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMenu()">Overview</a>
+  <a href="index.html#screenshots" onclick="closeMenu()">See It Live</a>
+  <a href="pricing.html" onclick="closeMenu()">Pricing</a>
+  <a href="why-bop.html" onclick="closeMenu()">Why BOP</a>
+  <a href="index.html#book" class="mob-cta" onclick="closeMenu()">Book a Discovery Call →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Pricing</div>
+    <h1>Straightforward pricing.<br><em>No surprises.</em></h1>
+    <p class="hero-sub">Three tiers based on team size. One price covers setup, build, training, and ongoing platform management. No per-user fees. No add-ons for features you should have included. No hidden costs 90 days in.</p>
+  </div>
+</section>
+<div class="accent-bar"></div>
+
+<!-- HONESTY BAR -->
+<div class="honesty-bar" style="background:var(--black);">
+  <div class="honesty-bar-inner">
+    <div class="honesty-item">All core modules included in every tier</div>
+    <div class="honesty-item">Setup, training, and go-live support included in setup fee</div>
+    <div class="honesty-item">Monthly fee covers full platform management — not just hosting</div>
+    <div class="honesty-item">No per-user fees. No feature tiers. No lock-in past 6 months.</div>
+  </div>
+</div>
+
+<!-- WHY YOUR CURRENT STACK COSTS MORE -->
+<section id="cost" class="section">
+  <div class="section-inner">
+    <div class="cost-intro">
+      <div class="reveal">
+        <div class="stag lt">The Real Cost</div>
+        <h2 class="sh2 lt">What your current stack<br><em>actually costs you.</em></h2>
+      </div>
+      <p class="slead lt reveal d1">Most field service companies are already paying more than the BOP — across 4–6 disconnected tools that still can't give you a live picture of your operation. This is what a 10-person team spends to get comparable capability through separate software.</p>
+    </div>
+    <div class="stack-table-wrap reveal">
+      <div class="stack-table-header">
+        <span>Tool / Function</span>
+        <span>What It Covers</span>
+        <span>Avg. Monthly Cost</span>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Field Service Management Software</div>
+        <div class="stack-covers">Job scheduling, dispatch, work orders</div>
+        <div class="stack-cost">$500 – $1,000</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Time Tracking / Workforce Management</div>
+        <div class="stack-covers">Crew hours, timesheets, shift scheduling</div>
+        <div class="stack-cost">$60 – $200</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">HR / People Management</div>
+        <div class="stack-covers">Employee records, onboarding, compliance</div>
+        <div class="stack-cost">$100 – $200</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Project / Job Costing</div>
+        <div class="stack-covers">Job costing, task tracking, milestones</div>
+        <div class="stack-cost">$100 – $200</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">CRM / Customer Management</div>
+        <div class="stack-covers">Contacts, contracts, renewal tracking</div>
+        <div class="stack-cost">$150 – $350</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tool">Reporting / Dashboard Tool</div>
+        <div class="stack-covers">KPIs, operational snapshots, analytics</div>
+        <div class="stack-cost">$50 – $200</div>
+      </div>
+      <div class="stack-total-row">
+        <div class="stack-tool">Total — Fragmented Stack (10 employees)</div>
+        <div class="stack-covers">Software only. Excludes setup, training, and admin hours lost to manual entry between tools.</div>
+        <div class="stack-cost">$960 – $2,150 / mo</div>
+      </div>
+      <div class="bop-row-bar">
+        <div class="stack-tool">BOP by Independent Commerce — Growth Tier</div>
+        <div class="stack-covers">Fully built, custom, branded, and managed. All modules included. 6–15 employees.</div>
+        <div class="stack-cost">$597 / mo</div>
+      </div>
+      <div class="savings-strip">
+        <span>Market data sourced from 2025–2026 FSM, HR, project management, and CRM software pricing benchmarks.</span>
+        <strong>Save $363 – $1,553+ per month</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers" class="section">
+  <div class="section-inner">
+    <div class="tiers-intro">
+      <div class="reveal">
+        <div class="stag">Service Tiers</div>
+        <h2 class="sh2">Priced by team size.<br><em>Not by feature.</em></h2>
+      </div>
+      <div class="reveal d1">
+        <div class="tier-note">
+          <strong>Why team size?</strong> The number of employees using the platform drives your setup complexity, your support load, and the depth of configuration required. It's the most honest way to price it — you pay for what you actually need, not for an arbitrary feature gate.
+        </div>
+      </div>
+    </div>
+    <div class="tiers-grid">
+
+      <!-- GROWTH -->
+      <div class="tier-card reveal">
+        <div class="tier-head">
+          <div class="tier-badge standard">Entry Point</div>
+          <div class="tier-name">Growth</div>
+          <div class="tier-size">6 – 15 employees · All roles included</div>
+          <div class="tier-pricing">
+            <div class="tier-price-cell">
+              <div class="tier-price-lbl">One-Time Setup</div>
+              <div class="tier-price-val">$3,500</div>
+              <div class="tier-price-note">CAD · 50% on signing, 50% on delivery</div>
+            </div>
+            <div class="tier-price-cell">
+              <div class="tier-price-lbl">Monthly</div>
+              <div class="tier-price-val">$597</div>
+              <div class="tier-price-note">CAD · billed 1st of each month</div>
+            </div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-section-lbl">Platform Includes</div>
+          <ul class="tier-includes">
+            <li>All core modules — customer management, job scheduling, crew time entry, live job costing, safety hub, document storage</li>
+            <li>Branded portal at your custom domain (e.g., ops.yourcompany.com)</li>
+            <li>10+ automated workflows — crew coordination, renewal reminders, payment alerts</li>
+            <li>Role-based access — owner, admin, sales, safety, and field crew views</li>
+            <li>Mobile access — crew enters time, uploads safety docs from any phone</li>
+            <li>Accounting integration — QuickBooks, Wave, or FreshBooks</li>
+            <li>Sales pipeline view — active leads, quotes, conversion tracking</li>
+            <li>Management reporting dashboard — live KPIs</li>
+          </ul>
+          <div class="tier-section-lbl">Support</div>
+          <ul class="tier-includes">
+            <li>Bi-weekly optimization sessions + priority email (4-hr response)</li>
+            <li>Phone access for urgent operational issues</li>
+            <li>All software licenses included</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="index.html#book" class="outline">Book a Discovery Call →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPERATIONS -->
+      <div class="tier-card featured reveal d1">
+        <div class="tier-head">
+          <div class="tier-badge popular">Most Common</div>
+          <div class="tier-name">Operations</div>
+          <div class="tier-size">16 – 35 employees · All roles included</div>
+          <div class="tier-pricing">
+            <div class="tier-price-cell">
+              <div class="tier-price-lbl">One-Time Setup</div>
+              <div class="tier-price-val">$5,500</div>
+              <div class="tier-price-note">CAD · 50% on signing, 50% on delivery</div>
+            </div>
+            <div class="tier-price-cell">
+              <div class="tier-price-lbl">Monthly</div>
+              <div class="tier-price-val">$897</div>
+              <div class="tier-price-note">CAD · billed 1st of each month</div>
+            </div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-section-lbl">Everything in Growth, plus</div>
+          <ul class="tier-includes">
+            <li>Unlimited automated workflows — no sequence caps</li>
+            <li>Multi-crew & territory management — separate crew groups and zones</li>
+            <li>Advanced job costing — labour efficiency, overtime flagging, margin alerts, cost-per-job trend analysis</li>
+            <li>HR & employee records — certifications, onboarding checklists, emergency contacts</li>
+            <li>Safety compliance dashboard — daily tailgate submission rates, outstanding sign-offs, incident records</li>
+            <li>API integrations — connect to proprietary systems, payroll software, or custom tools</li>
+          </ul>
+          <div class="tier-section-lbl">Support</div>
+          <ul class="tier-includes">
+            <li>Weekly dedicated optimization and strategy calls</li>
+            <li>Same-day response for all technical issues</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="index.html#book" class="primary">Book a Discovery Call →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="tier-card reveal d2">
+        <div class="tier-head">
+          <div class="tier-badge standard">Large Operations</div>
+          <div class="tier-name">Enterprise</div>
+          <div class="tier-size">35+ employees · Multi-location supported</div>
+          <div class="tier-pricing">
+            <div class="tier-price-cell">
+              <div class="tier-price-lbl">One-Time Setup</div>
+              <div class="tier-price-val">$8,500+</div>
+              <div class="tier-price-note">CAD · scoped per engagement</div>
+            </div>
+            <div class="tier-price-cell">
+              <div class="tier-price-lbl">Monthly</div>
+              <div class="tier-price-val">$1,499+</div>
+              <div class="tier-price-note">CAD · based on scope</div>
+            </div>
+          </div>
+        </div>
+        <div class="tier-body">
+          <div class="tier-section-lbl">Everything in Operations, plus</div>
+          <ul class="tier-includes">
+            <li>Multi-location architecture — separate dashboards, teams, and reporting per branch, all visible from one owner view</li>
+            <li>Custom module development — platform built around your specific processes</li>
+            <li>Executive reporting suite — consolidated cross-location KPIs, forecasting, trend analysis</li>
+            <li>Dedicated implementation manager — single point of contact from discovery through ongoing</li>
+            <li>Data entry service — up to 50 records entered per month by the ICC team</li>
+            <li>Priority SLA — guaranteed response times and monthly executive review calls</li>
+          </ul>
+          <div class="tier-section-lbl">Pricing</div>
+          <ul class="tier-includes">
+            <li>Scoped after discovery — final pricing based on team size, locations, and module requirements</li>
+          </ul>
+          <div class="tier-cta">
+            <a href="index.html#book" class="outline">Book a Discovery Call →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OPERATIONAL ADOPTION ADD-ON -->
+    <div class="oa-callout reveal">
+      <div class="oa-callout-inner">
+        <div class="oa-left">
+          <div class="oa-badge">Optional Add-On — Available on Any Tier</div>
+          <h3 class="oa-title">Operational Adoption Layer</h3>
+          <p class="oa-desc">A platform that your team doesn't use is infrastructure you're paying for and not getting value from. The Operational Adoption layer — delivered by our implementation partner — closes that gap. It's the difference between having the right tool and having a team that runs on it.</p>
+          <ul class="oa-points">
+            <li>Workflow design and standard operating procedure development</li>
+            <li>Crew-level implementation and field adoption training</li>
+            <li>Ongoing fractional operations management — a dedicated ops partner, not a help desk</li>
+            <li>Accountability systems built into how your team works day to day</li>
+          </ul>
+        </div>
+        <div class="oa-right">
+          <div class="oa-right-label">Interested?</div>
+          <p class="oa-right-desc">Scoped per engagement. Ask during your discovery call and we'll show you exactly what this looks like layered on top of your BOP.</p>
+          <a href="index.html#book" class="oa-cta">Ask About This →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED IN SETUP -->
+<section id="included" class="section">
+  <div class="section-inner">
+    <div class="included-intro">
+      <div class="reveal">
+        <div class="stag">Setup Fee — What's Included</div>
+        <h2 class="sh2">Everything to go live.<br><em>Nothing left out.</em></h2>
+      </div>
+      <p class="slead reveal d1">The setup fee is not a deposit. It covers the full build — from discovery through launch. Your team shows up to a working platform with training completed, not a blank tool you figure out yourself.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="module-card reveal">
+        <div class="module-icon">🗺️</div>
+        <div class="module-name">Discovery & Workflow Mapping</div>
+        <p class="module-desc">Detailed consultation to map your workflows, team structure, departments, and data requirements. We design the exact system your operation needs before building anything.</p>
+      </div>
+      <div class="module-card reveal d1">
+        <div class="module-icon">🏗️</div>
+        <div class="module-name">Custom Platform Build</div>
+        <p class="module-desc">Database architecture, module configuration, user role mapping, and branded portal setup at your domain. Built for your business — not adapted from a template.</p>
+      </div>
+      <div class="module-card reveal d2">
+        <div class="module-icon">🔗</div>
+        <div class="module-name">Integrations & Automations</div>
+        <p class="module-desc">All connections to accounting software, payment systems, and email tools configured and tested. Automated workflows built and running before launch day.</p>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon">📋</div>
+        <div class="module-name">Data Migration (up to 500 records)</div>
+        <p class="module-desc">Customer records, job history, and contact data imported and validated. Clean data in your platform from day one. Larger migrations available — see the migration table below.</p>
+      </div>
+      <div class="module-card reveal d1">
+        <div class="module-icon">🎓</div>
+        <div class="module-name">Full Team Training</div>
+        <p class="module-desc">Live training session for your entire team covering every role. Custom video guides and quick-reference materials provided for ongoing use and new hire onboarding.</p>
+      </div>
+      <div class="module-card reveal d2">
+        <div class="module-icon">🚀</div>
+        <div class="module-name">Launch Support — 30 Days</div>
+        <p class="module-desc">Intensive support through your first 30 days live. Daily availability for questions, configuration adjustments, and workflow tuning as your team gets into the rhythm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIGRATION TABLE -->
+<section id="migration" class="section">
+  <div class="section-inner">
+    <div class="migration-intro reveal">
+      <div class="stag">Data Migration</div>
+      <h2 class="sh2">Migration is priced<br><em>by volume — honestly.</em></h2>
+      <p class="slead" style="margin-top:12px;">Up to 500 records are included with every setup. Beyond that, migration is priced separately because cleaning and importing 5,000 records is a fundamentally different scope of work than 200 — and we'd rather tell you that upfront than bill it as a surprise.</p>
+    </div>
+    <table class="mig-table reveal d1">
+      <thead>
+        <tr>
+          <th>Record Volume</th>
+          <th>Scope</th>
+          <th>Add-On Fee (One-Time)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Up to 500 records</strong></td>
+          <td>Included with all tiers — no additional charge</td>
+          <td class="inc">Included</td>
+        </tr>
+        <tr>
+          <td><strong>501 – 2,000 records</strong></td>
+          <td>Import, deduplication, and validation</td>
+          <td>+ $500 CAD</td>
+        </tr>
+        <tr>
+          <td><strong>2,001 – 5,000 records</strong></td>
+          <td>Full migration, cleaning, and structured review</td>
+          <td>+ $1,000 CAD</td>
+        </tr>
+        <tr>
+          <td><strong>5,000+ records</strong></td>
+          <td>Complex migration — scoped per engagement</td>
+          <td>Quoted separately</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mig-note reveal d2">
+      <strong>What counts as a record?</strong> Customer profiles, job records, contract entries, and employee records each count as one record. Contact us if you're unsure of your volume — we'll give you an honest estimate before you sign anything.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="section-inner">
+    <div class="faq-intro reveal">
+      <div class="stag lt">Common Questions</div>
+      <h2 class="sh2 lt">Answered <em>straight.</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">Is there a contract? What's the minimum commitment?</div>
+        <div class="faq-a">Six-month minimum, then month-to-month with 30 days notice. We're not locking you in for 36 months like some competitors. <strong>We keep you because the platform works, not because leaving is painful.</strong></div>
+      </div>
+      <div class="faq-item reveal d1">
+        <div class="faq-q">What happens if my team grows past the tier I start on?</div>
+        <div class="faq-a">We move you to the appropriate tier. There's no penalty, no rebuild, and no migration — the platform grows with you. <strong>You just upgrade the monthly and the platform capacity expands.</strong></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Do I own the platform? What if I stop the service?</div>
+        <div class="faq-a">Your data lives in your account — not ours. If you ever leave, your data is fully exportable and we help you transition cleanly. <strong>You are never locked in or held hostage to our infrastructure.</strong></div>
+      </div>
+      <div class="faq-item reveal d1">
+        <div class="faq-q">What's included in the monthly fee — is it just hosting?</div>
+        <div class="faq-a">No. Monthly covers full platform management: hosting, all software licenses, ongoing optimization, support sessions, new hire training, and direct access when something needs attention. <strong>It's operations management, not just a server bill.</strong></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">How long does it actually take to go live?</div>
+        <div class="faq-a">Three weeks from signed contract to your team using the platform. Discovery in week one, build in week two, training and launch in week three. <strong>Two weeks from signed contract. Not three months. Not six.</strong></div>
+      </div>
+      <div class="faq-item reveal d1">
+        <div class="faq-q">What is the Operational Adoption add-on?</div>
+        <div class="faq-a">The platform is powerful on its own — but if you want help rebuilding how your operation runs on top of it, the Operational Adoption layer adds workflow design, SOP development, crew implementation, and fractional ops management. <strong>Delivered by our implementation partner. Priced per engagement — ask during your discovery call.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2>Pricing makes sense<br><em>when you see what it replaces.</em></h2>
+      <p>Book a discovery call. We'll walk you through a live demo and show you exactly what your platform would look like — then give you a clear number based on your team size.</p>
+    </div>
+    <div class="cta-btns reveal d1">
+      <a href="index.html#book" class="btn btn-white">Book a Discovery Call →</a>
+      <a href="why-bop.html" class="btn" style="border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);background:transparent;">See Competitive Analysis →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong><em>BOP</em> — Business Operations Platform</strong>
+      <p>By Independent Commerce &nbsp;·&nbsp; <a href="mailto:info@independentcc.com" style="color:inherit;">info@independentcc.com</a></p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="why-bop.html">Why BOP</a>
+      <a href="index.html#book">Book a Call</a>
+      <a href="https://independentcc.com">independentcc.com</a>
+    </div>
+    <div class="footer-copy">© 2026 Independent Commerce. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Set active nav link based on current page
+(function() {
+  const page = window.location.pathname.split('/').pop().replace('.html','') || 'index';
+  document.querySelectorAll('.nav-link[data-page]').forEach(a => {
+    if (a.dataset.page === page) a.classList.add('active');
+  });
+})();
+
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>

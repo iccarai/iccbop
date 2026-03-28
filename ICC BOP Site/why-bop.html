@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why BOP — How It Compares to Jobber, ServiceTitan & Others</title>
+<meta name="description" content="A verified comparison of Jobber, ServiceTitan, HousecallPro, and Workiz against the BOP. Real pricing, real gaps, real Year 1 costs for field service companies with 6–35 crew.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0d0d0d; --green-deep: #0e3d25; --green-mid: #1a5c3a;
+  --green-bright: #2d8a56; --green-light: #d4eddf; --green-pale: #f0faf5;
+  --white: #ffffff; --gray-mid: #e0e0e0; --gray-light: #f5f5f5;
+  --gray-text: #666; --gray-muted: #999; --red: #c0392b; --amber: #d97706;
+  --sp: 100px; --side: 64px; --max: 1080px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: rgba(13,13,13,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--side); }
+.nav-logo { text-decoration: none; display: flex; flex-direction: column; gap: 3px; }
+.nav-logo-mark { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; line-height: 1; }
+.nav-logo-mark em { font-style: normal; color: var(--green-bright); }
+.nav-logo-sub { font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.28); letter-spacing: 2px; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-link { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.42); text-decoration: none; transition: color 0.2s; padding-bottom: 2px; border-bottom: 1.5px solid transparent; }
+.nav-link:hover { color: var(--white); }
+.nav-link.active { color: var(--white); border-bottom-color: var(--green-bright); }
+.nav-cta { background: var(--green-mid); color: var(--white); padding: 10px 22px; border-radius: 3px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+.nav-cta:hover { background: var(--green-bright); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: rgba(13,13,13,0.99); z-index: 299; padding: 40px 32px; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.06); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.55); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+.mobile-nav a:hover { color: var(--white); }
+.mobile-nav .mob-cta { margin-top: 24px; background: var(--green-mid); color: var(--white) !important; padding: 16px 0; border-radius: 3px; text-align: center; font-size: 15px !important; border-bottom: none; }
+.accent-bar { height: 3px; background: linear-gradient(90deg, var(--green-mid), var(--green-bright) 45%, transparent); }
+.section { padding: var(--sp) var(--side); }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.stag { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 1.6px; color: var(--green-mid); text-transform: uppercase; margin-bottom: 20px; }
+.stag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--green-mid); }
+.stag.lt { color: var(--green-bright); }
+.stag.lt::before { background: var(--green-bright); }
+.sh2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.8vw, 48px); font-weight: 400; color: var(--black); line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 16px; }
+.sh2.lt { color: var(--white); }
+.sh2 em { font-style: italic; color: var(--green-mid); }
+.sh2.lt em { color: var(--green-bright); }
+.slead { font-size: 15px; color: var(--gray-text); line-height: 1.75; max-width: 620px; }
+.slead.lt { color: rgba(255,255,255,0.38); }
+.btn { display: inline-block; padding: 13px 26px; border-radius: 3px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+#hero { background: var(--black); padding: 140px var(--side) 80px; position: relative; overflow: hidden; }
+.hero-mesh { position: absolute; inset: 0; background-image: linear-gradient(rgba(45,138,86,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45,138,86,0.04) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; }
+.hero-glow { position: absolute; top: -100px; right: -100px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(26,92,58,0.14) 0%, transparent 60%); pointer-events: none; }
+.hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 2; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 1.8px; color: var(--green-bright); text-transform: uppercase; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards; }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--green-bright); }
+.hero-inner h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 5vw, 68px); font-weight: 400; color: var(--white); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s ease 0.15s forwards; }
+.hero-inner h1 em { font-style: italic; color: var(--green-bright); }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,0.4); line-height: 1.72; max-width: 580px; opacity: 0; animation: fadeUp 0.6s ease 0.25s forwards; }
+.research-bar { display: flex; gap: 32px; margin-top: 40px; opacity: 0; animation: fadeUp 0.6s ease 0.35s forwards; flex-wrap: wrap; }
+.research-item { display: flex; flex-direction: column; gap: 3px; }
+.research-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+.research-val { font-size: 13px; color: rgba(255,255,255,0.55); }
+#competitors { background: var(--gray-light); }
+.comp-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+.comp-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.comp-card { background: var(--white); border: 1.5px solid var(--gray-mid); border-radius: 8px; overflow: hidden; }
+.comp-card-head { padding: 20px 24px 16px; border-bottom: 1px solid var(--gray-mid); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.comp-name { font-size: 16px; font-weight: 800; color: var(--black); margin-bottom: 2px; }
+.comp-type { font-size: 11px; color: var(--gray-muted); }
+.comp-verdict { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+.verdict-caution { background: #fef3c7; color: #92400e; }
+.verdict-avoid { background: #fee2e2; color: #991b1b; }
+.verdict-limited { background: #f3f4f6; color: #6b7280; }
+.comp-body { padding: 20px 24px; }
+.comp-price-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.comp-price-chip { padding: 5px 12px; background: var(--gray-light); border-radius: 3px; font-size: 11px; color: var(--black); font-weight: 600; }
+.comp-price-chip.red { background: #fee2e2; color: var(--red); }
+.comp-section { margin-bottom: 14px; }
+.comp-section-lbl { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-muted); margin-bottom: 8px; }
+.comp-gaps { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.comp-gaps li { display: flex; gap: 8px; font-size: 12px; color: var(--gray-text); line-height: 1.5; align-items: flex-start; }
+.comp-gaps li::before { content: '✗'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+.comp-add { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.comp-add li { display: flex; gap: 8px; font-size: 12px; color: var(--red); font-weight: 600; line-height: 1.5; align-items: flex-start; }
+.comp-add li::before { content: '+'; font-weight: 800; flex-shrink: 0; }
+.comp-total { margin-top: 14px; padding: 12px 14px; background: #fee2e2; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.comp-total-label { font-size: 11px; color: var(--red); font-weight: 600; }
+.comp-total-val { font-size: 14px; font-weight: 800; color: var(--red); white-space: nowrap; }
+#year1 { background: var(--black); }
+.year1-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+.cost-compare { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.cost-col { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; }
+.cost-col.bop { background: rgba(45,138,86,0.08); border-color: rgba(45,138,86,0.3); }
+.cost-col-head { padding: 18px 14px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.cost-col.bop .cost-col-head { border-bottom-color: rgba(45,138,86,0.2); }
+.cost-col-name { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+.cost-col.bop .cost-col-name { color: var(--white); }
+.cost-col-sub { font-size: 10px; color: rgba(255,255,255,0.25); line-height: 1.4; }
+.cost-col-body { padding: 14px; }
+.cost-line { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 11px; }
+.cost-line:last-child { border-bottom: none; }
+.cost-line-label { color: rgba(255,255,255,0.35); }
+.cost-line-val { font-weight: 600; color: rgba(255,255,255,0.55); text-align: right; }
+.cost-line-val.red { color: #f87171; }
+.cost-line-val.green { color: var(--green-bright); }
+.cost-total { padding: 12px 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+.cost-col.bop .cost-total { border-top-color: rgba(45,138,86,0.3); }
+.cost-total-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 4px; }
+.cost-total-val { font-family: 'DM Serif Display', serif; font-size: 18px; font-style: italic; color: #f87171; line-height: 1; }
+.cost-col.bop .cost-total-val { color: var(--green-bright); }
+.cost-note { margin-top: 20px; font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.65; }
+#features { background: var(--white); }
+.feat-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+.feat-table-wrap { overflow-x: auto; border-radius: 8px; border: 1.5px solid var(--gray-mid); }
+.feat-table { width: 100%; border-collapse: collapse; min-width: 680px; }
+.feat-table th { padding: 12px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.4px; text-align: center; white-space: nowrap; }
+.feat-table th:first-child { text-align: left; background: var(--gray-light); min-width: 190px; }
+.feat-table th.th-comp { background: var(--gray-light); color: var(--gray-text); }
+.feat-table th.th-bop { background: var(--green-mid); color: var(--white); }
+.feat-table td { padding: 9px 12px; font-size: 12px; border-bottom: 1px solid var(--gray-mid); text-align: center; }
+.feat-table td:first-child { text-align: left; color: var(--black); font-weight: 500; background: var(--white); }
+.feat-table tr:last-child td { border-bottom: none; }
+.feat-table tr:nth-child(even) td:first-child { background: var(--gray-light); }
+.feat-table tr:nth-child(even) td:not(:first-child):not(:last-child) { background: #fafafa; }
+.feat-table td:last-child { background: rgba(45,138,86,0.05); }
+.feat-table tr:nth-child(even) td:last-child { background: rgba(45,138,86,0.09); }
+.feat-section-row td { background: var(--black) !important; color: rgba(255,255,255,0.5) !important; font-size: 9px !important; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 7px 12px !important; text-align: left !important; }
+.yes { color: var(--green-mid); font-weight: 700; font-size: 13px; }
+.no { color: var(--red); font-weight: 700; font-size: 12px; }
+.extra { color: var(--amber); font-weight: 600; font-size: 11px; }
+#hidden { background: var(--gray-light); }
+.hidden-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.hidden-card { background: var(--white); border: 1.5px solid var(--gray-mid); border-radius: 8px; padding: 24px 22px; }
+.hidden-icon { font-size: 22px; margin-bottom: 14px; }
+.hidden-title { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.hidden-desc { font-size: 12px; color: var(--gray-text); line-height: 1.65; }
+.hidden-impact { margin-top: 12px; padding: 8px 12px; background: var(--green-pale); border-left: 3px solid var(--green-mid); font-size: 11px; font-weight: 600; color: var(--green-mid); line-height: 1.5; }
+#cta { background: var(--green-deep); border-top: 1px solid rgba(45,138,86,0.3); }
+.cta-inner { max-width: var(--max); margin: 0 auto; padding: 64px var(--side); display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.cta-inner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 3vw, 40px); font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: -0.5px; }
+.cta-inner h2 em { font-style: italic; color: var(--green-bright); }
+.cta-inner p { font-size: 14px; color: rgba(255,255,255,0.42); margin-top: 10px; }
+.cta-btns { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.btn-white { background: var(--white); color: var(--green-deep); }
+.btn-white:hover { background: var(--green-pale); }
+.btn-ghost-lt { border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); background: transparent; }
+.btn-ghost-lt:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 36px var(--side); display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.footer-brand strong { font-size: 13px; font-weight: 800; color: var(--white); }
+.footer-brand strong em { font-style: normal; color: var(--green-bright); }
+.footer-brand p { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.65); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.15); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 900px) {
+  :root { --side: 32px; --sp: 72px; }
+  nav { padding: 0 32px; }
+  .nav-right { display: none; }
+  .hamburger { display: flex; }
+  .comp-header, .year1-header, .feat-header { grid-template-columns: 1fr; gap: 20px; }
+  .comp-cards { grid-template-columns: 1fr; }
+  .cost-compare { grid-template-columns: 1fr 1fr; }
+  .hidden-grid { grid-template-columns: 1fr 1fr; }
+  .cta-inner { grid-template-columns: 1fr; gap: 28px; }
+  .cta-btns { align-items: flex-start; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  :root { --side: 24px; --sp: 56px; }
+  .cost-compare { grid-template-columns: 1fr; }
+  .hidden-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark"><em>BOP</em></div>
+    <div class="nav-logo-sub">By Independent Commerce</div>
+  </a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="index.html#screenshots" class="nav-link">See It Live</a>
+    <a href="pricing.html" class="nav-link">Pricing</a>
+    <a href="why-bop.html" class="nav-link active">Why BOP</a>
+    <a href="index.html#book" class="nav-cta">Book a Discovery Call →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMenu()">Overview</a>
+  <a href="index.html#screenshots" onclick="closeMenu()">See It Live</a>
+  <a href="pricing.html" onclick="closeMenu()">Pricing</a>
+  <a href="why-bop.html" onclick="closeMenu()">Why BOP</a>
+  <a href="index.html#book" class="mob-cta" onclick="closeMenu()">Book a Discovery Call →</a>
+</div>
+
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Competitive Analysis</div>
+    <h1>You've seen the others.<br><em>Here's the real comparison.</em></h1>
+    <p class="hero-sub">Jobber, ServiceTitan, HousecallPro, and Workiz all have marketing budgets. This page has verified pricing, documented gaps, and Year 1 total costs — for field service companies with 6–35 crew who need more than scheduling software.</p>
+    <div class="research-bar">
+      <div class="research-item"><div class="research-label">Research Date</div><div class="research-val">March 2026</div></div>
+      <div class="research-item"><div class="research-label">Scope</div><div class="research-val">6–35 Crew Companies</div></div>
+      <div class="research-item"><div class="research-label">Pricing Region</div><div class="research-val">Canada (CAD)</div></div>
+      <div class="research-item"><div class="research-label">Sources</div><div class="research-val">G2, Capterra, TrustRadius, vendor sites</div></div>
+    </div>
+  </div>
+</section>
+<div class="accent-bar"></div>
+
+<section id="competitors" class="section">
+  <div class="section-inner">
+    <div class="comp-header">
+      <div class="reveal">
+        <div class="stag">Platform by Platform</div>
+        <h2 class="sh2">What each one<br><em>actually is.</em></h2>
+      </div>
+      <p class="slead reveal d1">Advertised prices are always entry-level with severe user caps and missing features. These are real-world costs for a 10-crew company trying to get the same capability the BOP ships with on day one.</p>
+    </div>
+    <div class="comp-cards">
+      <div class="comp-card reveal">
+        <div class="comp-card-head">
+          <div><div class="comp-name">Jobber</div><div class="comp-type">Field Service Management · Founded in Edmonton, AB</div></div>
+          <div class="comp-verdict verdict-caution">Use With Caution</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-price-row">
+            <div class="comp-price-chip">Grow (10 users) ~$489 CAD/mo</div>
+            <div class="comp-price-chip red">Extra users: +$41 CAD/user/mo</div>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">Not included in Jobber</div>
+            <ul class="comp-gaps">
+              <li>No crew time entry — requires separate time tracking software</li>
+              <li>No safety / WCB documentation</li>
+              <li>No HR or employee records</li>
+              <li>Live job costing only on Grow+ plan</li>
+              <li>Not custom-built to your business</li>
+            </ul>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">What you still need to buy</div>
+            <ul class="comp-add">
+              <li>Time tracking software (10 crew) — ~$120 CAD/mo</li>
+              <li>Safety documentation software (10 field) — ~$394 CAD/mo</li>
+              <li>HR / employee records tool — ~$100 CAD/mo</li>
+            </ul>
+          </div>
+          <div class="comp-total">
+            <div class="comp-total-label">Real-world monthly — 10 crew, comparable capability</div>
+            <div class="comp-total-val">~$1,103 CAD/mo</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card reveal d1">
+        <div class="comp-card-head">
+          <div><div class="comp-name">ServiceTitan</div><div class="comp-type">Enterprise Field Service · No Published Pricing</div></div>
+          <div class="comp-verdict verdict-avoid">Not Built for Your Size</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-price-row">
+            <div class="comp-price-chip red">Essentials: ~$476 CAD/tech/mo</div>
+            <div class="comp-price-chip red">10-tech team: ~$4,760 CAD/mo</div>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">Not included in ServiceTitan</div>
+            <ul class="comp-gaps">
+              <li>No safety / WCB documentation</li>
+              <li>Not designed for under 20 technicians</li>
+              <li>Marketing features sold separately</li>
+              <li>Not custom-built to your operation</li>
+            </ul>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">The costs nobody shows you upfront</div>
+            <ul class="comp-add">
+              <li>Mandatory implementation: $7,000 – $49,000 CAD one-time</li>
+              <li>Onboarding: 3–6 months (some users never complete it)</li>
+              <li>Early exit penalties: $10,000 – $40,000+</li>
+              <li>12–36 month minimum contract lock-in</li>
+            </ul>
+          </div>
+          <div class="comp-total">
+            <div class="comp-total-label">Software alone (excl. implementation) — 10 crew</div>
+            <div class="comp-total-val">~$6,134+ CAD/mo</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card reveal">
+        <div class="comp-card-head">
+          <div><div class="comp-name">HousecallPro</div><div class="comp-type">Home Service Software · Consumer Focus</div></div>
+          <div class="comp-verdict verdict-limited">Limited for Commercial Ops</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-price-row">
+            <div class="comp-price-chip">MAX (unlimited users) ~$448 CAD/mo</div>
+            <div class="comp-price-chip red">+$48 CAD/user above MAX</div>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">Not included in HousecallPro</div>
+            <ul class="comp-gaps">
+              <li>No safety / WCB documentation</li>
+              <li>No crew time entry</li>
+              <li>No live job costing</li>
+              <li>No HR records</li>
+              <li>Built for residential — commercial multi-crew ops hit limits fast</li>
+            </ul>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">What you still need to buy</div>
+            <ul class="comp-add">
+              <li>Time tracking software — ~$120 CAD/mo</li>
+              <li>Safety documentation software — ~$394 CAD/mo</li>
+              <li>Payment processing: 2.9% + $0.30 per transaction</li>
+            </ul>
+          </div>
+          <div class="comp-total">
+            <div class="comp-total-label">Real-world monthly — 10 crew, comparable capability</div>
+            <div class="comp-total-val">~$962+ CAD/mo</div>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card reveal d1">
+        <div class="comp-card-head">
+          <div><div class="comp-name">Workiz</div><div class="comp-type">Field Service Software · SMB Focus</div></div>
+          <div class="comp-verdict verdict-limited">Significant Gaps</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-price-row">
+            <div class="comp-price-chip">Base plan ~$306–$442 CAD/mo</div>
+            <div class="comp-price-chip red">+$63–$88/user · Phone add-on +$140</div>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">Not included in Workiz</div>
+            <ul class="comp-gaps">
+              <li>No safety / WCB documentation</li>
+              <li>No live job costing</li>
+              <li>No HR records</li>
+              <li>Add-ons push a 7-person setup past $1,100/mo</li>
+            </ul>
+          </div>
+          <div class="comp-section">
+            <div class="comp-section-lbl">What you still need to buy</div>
+            <ul class="comp-add">
+              <li>Time tracking — ~$120 CAD/mo</li>
+              <li>Safety documentation software — ~$394 CAD/mo</li>
+              <li>HR / employee records — ~$100 CAD/mo</li>
+            </ul>
+          </div>
+          <div class="comp-total">
+            <div class="comp-total-label">Real-world monthly — 7-person setup, comparable capability</div>
+            <div class="comp-total-val">~$1,170+ CAD/mo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="year1" class="section">
+  <div class="section-inner">
+    <div class="year1-header">
+      <div class="reveal">
+        <div class="stag lt">Year 1 Total Cost</div>
+        <h2 class="sh2 lt">Apples to apples.<br><em>10-crew company.</em></h2>
+      </div>
+      <p class="slead lt reveal d1">Every tool required to match BOP capability is included. USD converted at ~1.40 CAD. All figures are estimates based on Q1 2026 published and user-reported pricing.</p>
+    </div>
+    <div class="cost-compare reveal">
+      <div class="cost-col">
+        <div class="cost-col-head"><div class="cost-col-name">Jobber Stack</div><div class="cost-col-sub">Jobber + time tracking + safety + HR</div></div>
+        <div class="cost-col-body">
+          <div class="cost-line"><span class="cost-line-label">Annual software</span><span class="cost-line-val red">~$14,136</span></div>
+          <div class="cost-line"><span class="cost-line-label">Setup / config</span><span class="cost-line-val">DIY</span></div>
+          <div class="cost-line"><span class="cost-line-label">Add-on tools</span><span class="cost-line-val red">~$7,368</span></div>
+          <div class="cost-line"><span class="cost-line-label">Platforms to manage</span><span class="cost-line-val">5</span></div>
+        </div>
+        <div class="cost-total"><div class="cost-total-label">Year 1 Total</div><div class="cost-total-val">~$21,504</div></div>
+      </div>
+      <div class="cost-col">
+        <div class="cost-col-head"><div class="cost-col-name">ServiceTitan</div><div class="cost-col-sub">Essentials + implementation + add-ons</div></div>
+        <div class="cost-col-body">
+          <div class="cost-line"><span class="cost-line-label">Annual software</span><span class="cost-line-val red">~$73,608</span></div>
+          <div class="cost-line"><span class="cost-line-label">Implementation</span><span class="cost-line-val red">$7K–$49K</span></div>
+          <div class="cost-line"><span class="cost-line-label">Add-on tools</span><span class="cost-line-val red">~$4,728</span></div>
+          <div class="cost-line"><span class="cost-line-label">Contract lock-in</span><span class="cost-line-val">12–36 mo</span></div>
+        </div>
+        <div class="cost-total"><div class="cost-total-label">Year 1 Total</div><div class="cost-total-val">~$85,336+</div></div>
+      </div>
+      <div class="cost-col">
+        <div class="cost-col-head"><div class="cost-col-name">HousecallPro</div><div class="cost-col-sub">MAX + time + safety tools</div></div>
+        <div class="cost-col-body">
+          <div class="cost-line"><span class="cost-line-label">Annual software</span><span class="cost-line-val red">~$11,736</span></div>
+          <div class="cost-line"><span class="cost-line-label">Setup / config</span><span class="cost-line-val">DIY</span></div>
+          <div class="cost-line"><span class="cost-line-label">Add-on tools</span><span class="cost-line-val red">~$6,168</span></div>
+          <div class="cost-line"><span class="cost-line-label">Processing fees</span><span class="cost-line-val red">2.9%+ per txn</span></div>
+        </div>
+        <div class="cost-total"><div class="cost-total-label">Year 1 Total</div><div class="cost-total-val">~$17,904+</div></div>
+      </div>
+      <div class="cost-col">
+        <div class="cost-col-head"><div class="cost-col-name">Workiz</div><div class="cost-col-sub">Base + add-ons for real capability</div></div>
+        <div class="cost-col-body">
+          <div class="cost-line"><span class="cost-line-label">Annual software</span><span class="cost-line-val red">~$14,040</span></div>
+          <div class="cost-line"><span class="cost-line-label">Setup / config</span><span class="cost-line-val">DIY</span></div>
+          <div class="cost-line"><span class="cost-line-label">Add-on tools</span><span class="cost-line-val red">~$6,168</span></div>
+          <div class="cost-line"><span class="cost-line-label">Custom-built?</span><span class="cost-line-val">No</span></div>
+        </div>
+        <div class="cost-total"><div class="cost-total-label">Year 1 Total</div><div class="cost-total-val">~$20,208</div></div>
+      </div>
+      <div class="cost-col bop">
+        <div class="cost-col-head"><div class="cost-col-name">BOP — Growth</div><div class="cost-col-sub">6–15 crew · fully managed · all-in</div></div>
+        <div class="cost-col-body">
+          <div class="cost-line"><span class="cost-line-label">Annual subscription</span><span class="cost-line-val green">$7,164</span></div>
+          <div class="cost-line"><span class="cost-line-label">Setup fee (one-time)</span><span class="cost-line-val green">$3,500</span></div>
+          <div class="cost-line"><span class="cost-line-label">Add-on tools required</span><span class="cost-line-val green">None</span></div>
+          <div class="cost-line"><span class="cost-line-label">Custom-built?</span><span class="cost-line-val green">Yes</span></div>
+        </div>
+        <div class="cost-total"><div class="cost-total-label">Year 1 Total — All-In</div><div class="cost-total-val">$10,664</div></div>
+      </div>
+    </div>
+    <p class="cost-note reveal">* Year 1 totals = annual subscriptions + setup/implementation + add-on tools required to reach comparable BOP capability. Add-on tools include crew time tracking (~$1,440/yr), safety/WCB documentation (~$4,728/yr), and HR records (~$1,200/yr) where not natively included. USD converted at ~1.40 CAD. All figures estimates based on Q1 2026 published and user-reported pricing. Competitor pricing subject to change.</p>
+  </div>
+</section>
+
+<section id="features" class="section">
+  <div class="section-inner">
+    <div class="feat-header">
+      <div class="reveal">
+        <div class="stag">Feature Comparison</div>
+        <h2 class="sh2">Native. Add-on.<br><em>Or just not there.</em></h2>
+      </div>
+      <p class="slead reveal d1">✅ = Native &nbsp;&nbsp; ⚡ = Paid add-on required &nbsp;&nbsp; ✗ = Not available. Every capability a field service operation actually needs — who has it built in, who charges extra, and who simply doesn't have it.</p>
+    </div>
+    <div class="feat-table-wrap reveal">
+      <table class="feat-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="th-comp">Jobber</th>
+            <th class="th-comp">ServiceTitan</th>
+            <th class="th-comp">HousecallPro</th>
+            <th class="th-comp">Workiz</th>
+            <th class="th-bop">ICC BOP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="feat-section-row"><td colspan="6">Core Field Service</td></tr>
+          <tr><td>Job Scheduling & Dispatch</td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td></tr>
+          <tr><td>Mobile Access for Field Crew</td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td></tr>
+          <tr><td>Custom-Built for Your Business</td><td><span class="no">✗</span> generic</td><td><span class="no">✗</span> generic</td><td><span class="no">✗</span> generic</td><td><span class="no">✗</span> generic</td><td><span class="yes">✅</span> built for you</td></tr>
+          <tr class="feat-section-row"><td colspan="6">Billing & Financial</td></tr>
+          <tr><td>Live Job Costing (revenue vs. labour)</td><td><span class="extra">⚡ Grow+ only</span></td><td><span class="yes">✅</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span></td></tr>
+          <tr><td>Payment Processing Fees</td><td><span class="extra">⚡ 2.9%+$0.30</span></td><td><span class="extra">⚡ fee applies</span></td><td><span class="extra">⚡ 2.9%+$0.30</span></td><td><span class="extra">⚡ fee applies</span></td><td><span class="yes">✅</span> your processor</td></tr>
+          <tr><td>Accounting Integration</td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td><td><span class="extra">⚡ limited</span></td><td><span class="yes">✅</span></td></tr>
+          <tr class="feat-section-row"><td colspan="6">Crew & Time Management</td></tr>
+          <tr><td>Crew Time Entry / Clock-In</td><td><span class="no">✗</span> add-on needed</td><td><span class="extra">⚡ add-on</span></td><td><span class="no">✗</span> add-on needed</td><td><span class="yes">✅</span></td><td><span class="yes">✅</span></td></tr>
+          <tr><td>Hourly Rate per Crew Member</td><td><span class="no">✗</span></td><td><span class="yes">✅</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span></td></tr>
+          <tr><td>Role-Based Access Control</td><td><span class="extra">⚡ limited</span></td><td><span class="yes">✅</span></td><td><span class="extra">⚡ basic</span></td><td><span class="extra">⚡ basic</span></td><td><span class="yes">✅</span> fully configured</td></tr>
+          <tr><td>HR & Employee Records</td><td><span class="no">✗</span></td><td><span class="extra">⚡ limited</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span> Operations+</td></tr>
+          <tr class="feat-section-row"><td colspan="6">Safety & Compliance</td></tr>
+          <tr><td>WCB Documentation & Records</td><td><span class="no">✗</span> add-on needed</td><td><span class="no">✗</span> add-on needed</td><td><span class="no">✗</span> add-on needed</td><td><span class="no">✗</span> add-on needed</td><td><span class="yes">✅</span> all tiers</td></tr>
+          <tr><td>Daily Tailgate Sign-Off Upload</td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span> mobile, all tiers</td></tr>
+          <tr><td>Safety Compliance Dashboard</td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span> Operations+</td></tr>
+          <tr class="feat-section-row"><td colspan="6">Customer & Contract Management</td></tr>
+          <tr><td>Contract Renewal Tracking</td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span> all tiers</td></tr>
+          <tr><td>Sales Lead Pipeline</td><td><span class="extra">⚡ basic</span></td><td><span class="extra">⚡ add-on</span></td><td><span class="extra">⚡ add-on</span></td><td><span class="extra">⚡ basic</span></td><td><span class="yes">✅</span> Growth+</td></tr>
+          <tr class="feat-section-row"><td colspan="6">Implementation & Platform</td></tr>
+          <tr><td>Full Implementation Included</td><td><span class="no">✗</span> DIY</td><td><span class="extra">⚡ $7K–$49K extra</span></td><td><span class="no">✗</span> DIY</td><td><span class="no">✗</span> DIY</td><td><span class="yes">✅</span> in setup fee</td></tr>
+          <tr><td>Team Training Included</td><td><span class="no">✗</span></td><td><span class="extra">⚡ paid</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span> included</td></tr>
+          <tr><td>Go-Live Timeline</td><td>Same day (self)</td><td>3–6 months</td><td>Same day (self)</td><td>Same day (self)</td><td><span class="yes">2 weeks</span></td></tr>
+          <tr><td>Branded Portal at Your Domain</td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="no">✗</span></td><td><span class="yes">✅</span> all tiers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="hidden" class="section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="stag">Hidden Costs</div>
+      <h2 class="sh2">What nobody shows you<br><em>in the demo.</em></h2>
+      <p class="slead" style="margin-top:12px;">Every competitor has costs that don't appear in their marketing. These are the numbers field service owners hit 90–180 days in — after the contract is signed.</p>
+    </div>
+    <div class="hidden-grid">
+      <div class="hidden-card reveal">
+        <div class="hidden-icon">💳</div>
+        <div class="hidden-title">Payment Processing Fees</div>
+        <p class="hidden-desc">Jobber, HousecallPro, and others charge 2.9% + $0.30 per credit card transaction on top of their monthly fee. On a $50,000 month of invoicing — over $1,450 in processing fees alone, every month, on top of software costs.</p>
+        <div class="hidden-impact">BOP: Use your own payment processor. No in-platform transaction fees.</div>
+      </div>
+      <div class="hidden-card reveal d1">
+        <div class="hidden-icon">📞</div>
+        <div class="hidden-title">Phone System Add-Ons</div>
+        <p class="hidden-desc">Workiz's phone system is a separate add-on. ServiceTitan's communication tools are tiered above base. For a dispatching operation, integrated calling and SMS is a basic requirement — sold back to you as an upgrade.</p>
+        <div class="hidden-impact">BOP: Communication integrations configured at setup. No add-on required.</div>
+      </div>
+      <div class="hidden-card reveal d2">
+        <div class="hidden-icon">🔒</div>
+        <div class="hidden-title">Contract Lock-In & Exit Penalties</div>
+        <p class="hidden-desc">ServiceTitan requires 12–36 month minimum contracts. Documented early exit penalties range from $10,000 to $40,000+. You find out what leaving costs only after you're trying to leave.</p>
+        <div class="hidden-impact">BOP: 6-month minimum, then 30 days notice. Your data is yours and exportable.</div>
+      </div>
+      <div class="hidden-card reveal">
+        <div class="hidden-icon">🧩</div>
+        <div class="hidden-title">The Safety Software Nobody Includes</div>
+        <p class="hidden-desc">Every competitor on this page requires a separate safety documentation tool for WCB compliance — approximately $394 CAD/mo for a 10-person field team. Not mentioned on any of their pricing pages.</p>
+        <div class="hidden-impact">BOP: Safety documentation hub included in every tier. No separate tool needed.</div>
+      </div>
+      <div class="hidden-card reveal d1">
+        <div class="hidden-icon">⏱️</div>
+        <div class="hidden-title">Crew Time Tracking Is Extra</div>
+        <p class="hidden-desc">Jobber and HousecallPro don't include crew time entry. Most teams end up buying a separate time tracking tool at ~$120 CAD/mo — then manually reconciling it with their scheduling software. Data entry you're paying for twice.</p>
+        <div class="hidden-impact">BOP: Crew time entry linked directly to jobs. Flows into job costing automatically.</div>
+      </div>
+      <div class="hidden-card reveal d2">
+        <div class="hidden-icon">🎓</div>
+        <div class="hidden-title">Implementation and Training</div>
+        <p class="hidden-desc">With Jobber and HousecallPro you configure and train yourself. With ServiceTitan you pay $7,000–$49,000 and still spend months in onboarding. Either way the cost lands on you — in money, time, or both.</p>
+        <div class="hidden-impact">BOP: Full implementation and team training included in setup fee. Live in 2 weeks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2>The numbers are clear.<br><em>Book a call and see it live.</em></h2>
+      <p>We'll walk you through a fully operational platform built for a company exactly like yours — then give you an honest number based on your team size.</p>
+    </div>
+    <div class="cta-btns reveal d1">
+      <a href="index.html#book" class="btn btn-white">Book a Discovery Call →</a>
+      <a href="pricing.html" class="btn btn-ghost-lt">See Full Pricing →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong><em>BOP</em> — Business Operations Platform</strong>
+      <p>By Independent Commerce &nbsp;·&nbsp; <a href="mailto:info@independentcc.com" style="color:inherit;">info@independentcc.com</a></p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Overview</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="why-bop.html">Why BOP</a>
+      <a href="index.html#book">Book a Call</a>
+      <a href="https://independentcc.com">independentcc.com</a>
+    </div>
+    <div class="footer-copy">© 2026 Independent Commerce. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileNav').classList.remove('open');
+  document.body.style.overflow = '';
+}
+const ro = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+</body>
+</html>
