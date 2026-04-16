@@ -777,7 +777,7 @@ src="https://www.facebook.com/tr?id=1502185384838287&ev=PageView&noscript=1"
 
   <script>
     // ── Webhook URL — replace with live Make.com URL before deploying ──
-    const https://hook.us2.make.com/nbkhjig90mncpze2qhhosb174nby8o2j = 'https://hook.us2.make.com/nbkhjig90mncpze2qhhosb174nby8o2j';
+    const WEBHOOK_URL = 'https://hook.us2.make.com/nbkhjig90mncpze2qhhosb174nby8o2j';
 
     // ── Mobile nav ────────────────────────────────────────────────
     function toggleMenu() {
@@ -844,7 +844,7 @@ src="https://www.facebook.com/tr?id=1502185384838287&ev=PageView&noscript=1"
       btn.classList.add('loading');
 
       try {
-        const response = await fetch(https://hook.us2.make.com/nbkhjig90mncpze2qhhosb174nby8o2j, {
+        const response = await fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(fields),
